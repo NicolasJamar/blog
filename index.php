@@ -19,13 +19,13 @@
 
 		$no_limit = ($no_page -= 1) * 2;
 		
-	} else{
-		location('index.php');
+	} elseif(EMPTY($_GET['page'])){
+		header('location: index.php?page=1'); //Donner la valeur page=1 par défaut si pas de n° de page défini
 	}
 
 
-	//On va chercher les 5 derniers billets dans la bdd
-	$reponse = $bdd->query("SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%i') AS date_creation_fr FROM billets ORDER BY id DESC LIMIT 0, 5");
+	//On va chercher les 2 derniers billets dans la bdd
+	$reponse = $bdd->query("SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%i') AS date_creation_fr FROM billets ORDER BY id DESC LIMIT $no_limit, 2");
 
 ?>
 
