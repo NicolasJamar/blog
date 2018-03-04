@@ -24,7 +24,7 @@
 	}
 
 
-	//On va chercher les 2 derniers billets dans la bdd
+	//On va chercher les 2 derniers billets dans la bdd et on démarre la LIMIT en fonction du n° de page
 	$reponse = $bdd->query("SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%i') AS date_creation_fr FROM billets ORDER BY id DESC LIMIT $no_limit, 2");
 
 ?>
